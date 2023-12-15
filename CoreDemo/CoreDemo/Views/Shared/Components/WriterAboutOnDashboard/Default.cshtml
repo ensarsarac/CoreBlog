@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.AppUser
+
+<h2>merhaba, @Model.UserName</h2>
+
+    <div class="d-flex mt-5 align-items-top">
+        @*<img src="~/WriterImageFiles/@Model.WriterImage" class="img-sm rounded-circle mr-3" alt="image">*@
+        <div class="mb-0 flex-grow">
+            <div class="d-flex">
+                <img src="~/WriterImageFiles/@Model.ImageUrl" class=" img-fluid mr-3 rounded-pill" style="width:50px; height:50px;" />
+                <h5 class="mr-2">@Model.NameSurname <br /> @Model.Email</h5><br />
+
+            </div>
+            <div>
+            </div>
+            <div class="my-3">
+                <p class="mb-0 font-weight-light d-block">@ViewBag.about</p>
+            </div>
+        </div>
+        <div class="ml-auto">
+            <i class="mdi mdi-heart-outline text-muted"></i>
+        </div>
+    </div>

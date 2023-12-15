@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+@{
+    ViewData["Title"] = "AllBlogs";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Bloglar</h1>
+
+
+
+<div class="row border-bottom">
+
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-3">
+                <div class="card mb-3">
+
+                    <div class="card-header">
+                        <img src="~/img/@item.BlogImage" class="w-100 card-img-top img-thumbnail" />
+                    </div>
+                    <div class="card-body">
+
+                        <small class="text-muted">@item.Category.CategoryName</small>
+                        <a href="#" class="product-name"> @item.BlogTitle</a>
+
+
+
+                        <div class="small m-t-xs">
+                            @if (item.BlogContent.Count() < 50)
+                            {
+                                @item.BlogContent
+                            }
+                            else
+                            {
+                            <small>@item.BlogContent.Substring(0, 50)...</small>
+                            }
+                        </div>
+                        <div class="m-t text-righ">
+
+                            <a href="/Admin/Blog/BlogDetails/@item.BlogId" class="btn btn-xs btn-outline btn-primary">Detaylar <i class="fa fa-long-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+    </div>
+
+
+</div>

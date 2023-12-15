@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+
+@{
+    ViewData["Title"] = "AllNotification";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Tüm Bildirimler</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Bildirim</th>
+        <th>Tarih</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        @if (item.NotificationStatus)
+        {
+            <tr>
+                <td><strong>@item.NotificationId</strong>  </td>
+
+
+                <td> <a href="/Notification/NotificationDetails/@item.NotificationId" class="text-dark"><strong>@item.NotificationType </strong></a> </td>
+
+                <td><strong>@item.NotificationDate.ToShortDateString() </strong> </td>
+
+                <td><strong>Okunmadı</strong></td>
+            </tr>
+        }
+        else
+        {
+
+            <tr>
+                <td>@item.NotificationId </td>
+                <td>@item.NotificationType </td>
+                <td>@item.NotificationDate.ToShortDateString() </td>
+
+                <td>Okundu</td>
+            </tr>
+        }
+
+    }
+</table>

@@ -1,0 +1,16 @@
+﻿@model int
+
+<div class="comment-top">
+    <h4>Bir Yorum Yapınız</h4>
+
+    <div class="comment-bottom">
+        <form action="/Comment/AddCommentView/" method="post">
+            <input type="hidden" id="BlogId" name="BlogId" value="@Model" />
+
+            <input class="form-control" type="text" name="CommentTitle" placeholder="Konu" required="">
+
+            <textarea class="form-control" name="CommentContent" placeholder="Mesajınız" required=""></textarea>
+            <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+        </form>
+    </div>
+</div>

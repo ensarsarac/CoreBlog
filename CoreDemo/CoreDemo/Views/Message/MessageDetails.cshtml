@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h1>Mesaj Detayı</h1>
+
+            <div class="card p-3">
+
+                <div class="card-title">
+                    <div class="mb-3">
+                        <h4>Gönderen:</h4>
+                        <span><small class="text-secondary">@Model.SenderUser.WriterMail</small> </span>
+                    </div>
+                    <div>
+                        <h4>Alıcı:</h4>
+                        <span><small class="text-secondary">@Model.ReceiverUser.WriterMail</small> </span>
+                    </div>
+                </div>
+                <hr />
+                <h4>İçerik</h4>
+
+                <div class="card-body">
+                    <p>@Model.MessageDetails</p>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,98 @@
+﻿@using EntityLayer.Concrete
+@model List<Message2>
+@{
+    ViewData["Title"] = "Sendbox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+
+
+
+        </nav>
+    </div>
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            @await Html.PartialAsync("MailLeftMenu")
+
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="mail-box-header">
+
+                    <form method="get" action="index.html" class="float-right mail-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" name="search" placeholder="Mail Ara">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    Ara
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>
+                        Giden Kutusu (@Model.Count())
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group float-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                        </div>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Yenile</button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Okundu Olarak İşaretle"><i class="fa fa-eye"></i> </button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Önemli Olarak İşaretle"><i class="fa fa-exclamation"></i> </button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Çöp Kutusuna Taşı"><i class="fa fa-trash-o"></i> </button>
+
+                    </div>
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="unread">
+                                    <td class="check-mail">
+                                        <input type="checkbox" class="i-checks">
+                                    </td>
+                                    <td class="mail-ontact"><a href="mail_detail.html">@item.ReceiverUser.WriterName</a></td>
+                                    <td class="mail-subject"><a href="mail_detail.html">@item.MessageSubject</a></td>
+                                    <td class="text-right mail-date">@item.MessageDate</td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

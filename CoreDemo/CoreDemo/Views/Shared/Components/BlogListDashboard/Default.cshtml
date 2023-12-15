@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concrete
+@model IEnumerable<Blog>
+
+<div class="container-fluid">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Kategori</th>
+            <th>Oluşturma Tarihi</th>
+
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BlogId</td>
+                <td>@item.BlogTitle</td>
+
+                @if (item.BlogContent.Length < 50)
+                {
+                    <td>@item.BlogContent</td>
+                }
+                else
+                {
+                    <td>@item.BlogContent.Substring(0,50)...</td>
+                }
+
+                <td class="badge badge-gradient-success d-block m-2">@item.Category.CategoryName</td>
+                <td>@item.BlogCreateDate.ToShortDateString()</td>
+                <td><a href="/Blog/BlogDetails/@item.BlogId" class="text-light btn btn-gradient-info">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+
+</div>

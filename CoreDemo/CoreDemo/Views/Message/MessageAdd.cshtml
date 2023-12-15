@@ -1,0 +1,36 @@
+﻿@model MessageAddViewModel
+@{
+    ViewData["Title"] = "MessageAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <h1 class="mb-3">Mesaj Gönder</h1>
+
+            <form action="/Message/MessageAdd/" method="post">
+
+                <div class="form-group mb-3">
+                    <label asp-for="@Model.ToUser" class="form-label">Kime</label>
+                    <input asp-for="@Model.ToUser" type="email" class="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="@Model.Subject" class="form-label">Konu</label>
+                    <input asp-for="@Model.Subject" class="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="@Model.Details" class="form-label">İçerik</label>
+                    <textarea asp-for="@Model.Details" rows="5" cols="35" class="form-control">  </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Mesaj Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+<div class="container my-3">
+    <h2>@ViewBag.CategoryTitle.CategoryName</h2>
+    <hr />
+    <div class="row my-3">
+
+
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 card">
+                <a href="single.html">
+                    <img src="~/CoreBlogTema/web/@item.BlogImage" class="card-img-top img-fluid" alt="">
+                </a>
+                <div class="card-body">
+                    <ul class="blog-icons my-4">
+                        <li>
+                            <a href="#">
+                                <i class="far fa-calendar-alt"></i> @item.BlogCreateDate.ToString("MM/dd/yyyy")
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#">
+                                <i class="far fa-comment"></i> 0
+                            </a>
+                        </li>
+
+
+                    </ul>
+                    <h5 class="card-title">
+                        <a href="/Blog/BlogDetails/@item.BlogId">@item.BlogTitle</a>
+                    </h5>
+                    <p class="card-text mb-3">@item.BlogContent.Substring(0, 5)...</p>
+                    <a href="/Blog/BlogDetails/@item.BlogId" class="btn btn-primary read-m">Devamını Oku</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

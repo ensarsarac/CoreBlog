@@ -1,0 +1,126 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Yazar Ajax İşlemleri</h1>
+<br />
+<button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
+<button type="button" id="btnremovewriter" class="btn btn-outline-danger">Yazar Sil</button>
+<button type="button" id="btnupdatewriter" class="btn btn-outline-warning">Yazar Güncelle</button>
+
+<br />
+<br />
+<div id="writerlist">
+    Buraya Yazarlar Gelicek.
+</div>
+<div id="writerget">
+    Buraya 1 Yazar Gelicek.
+</div>
+<div>
+    <input type="text" class="form-control  mt-3" id="writerid" placeholder="Yazar Id Değerini Girin:" />
+</div>
+<div id="getbyidtable">
+
+</div>
+<br />
+
+<div>
+    <input type="text" class="form-control" id="txtremovewriterid" class="my-3" placeholder="Silinecek Yazar ID giriniz" />
+</div>
+<br />
+
+<div>
+    <input type="text" class="form-control" id="txtupdatewriterid" placeholder="Yazar Güncellenecek Id" />
+    <input type="text" class="form-control" id="txtupdatewritername" placeholder="Yazar Yeni Adı" />
+</div>
+
+
+@section scripts{
+    <script>
+        $('#btngetlist').click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Admin/Writer/WriterList/",
+                success: function (func) {
+                    let w = jQuery.parseJSON(func);
+                    let tablehtml = "<table class='table table-bordered'><tr><th>Yazar ID</th><th>Yazar Adı</th></tr>";
+                    $.each(w, (key, value) => {
+                        tablehtml += `<tr><td>${value.Id}</td> <td>${value.NameSurname}</td></tr>`;
+                    });
+                    tablehtml += "</table>";
+
+                    $('#writerlist').html(tablehtml);
+                    console.log(w);
+                }
+            });
+        });
+
+        $('#btngetbyid').click(function () {
+            let id = $('#writerid').val();
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Admin/Writer/GetWriterById/",
+                data: { writerid: id },
+                success: function (func) {
+                    console.log(func);
+                    let w = jQuery.parseJSON(func);
+                    let tablehtml = "<table class='table table-bordered'><tr><th>Yazar ID</th><th>Yazar Adı</th></tr>";
+
+                    tablehtml += `<tr><td>${w.Id}</td> <td>${w.NameSurname}</td></tr>`;
+
+                    tablehtml += "</table>";
+
+                    $('#getbyidtable').html(tablehtml);
+
+                }
+            });
+        });
+
+
+        $('#btnremovewriter').click(function () {
+            let getid = $('#txtremovewriterid').val();
+            console.log(getid);
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Admin/Writer/RemoveWriter",
+                data: { writerid: getid },
+                success: function (func) {
+                    console.log(func);
+                    alert("Yazar silme başarılı bir şekilde gerçekleşti.")
+
+                }
+            });
+        });
+
+        $('#btnupdatewriter').click(function () {
+
+            let getid = $('#txtupdatewriterid').val();
+            let newname = $('#txtupdatewritername').val();
+            let writer = {
+                Id: getid,
+                Name: newname
+            }
+            $.ajax({
+                type: "post",
+                url: "/Admin/Writer/UpdateWriter/",
+                data: writer,
+                success: function (func) {
+                    alert("Kayıt Güncelleme işlemi başarıyla gerçekleşti.")
+                }
+            });
+
+        });
+
+    </script>
+}

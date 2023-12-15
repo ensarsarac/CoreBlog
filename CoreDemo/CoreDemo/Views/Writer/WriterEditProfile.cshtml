@@ -1,0 +1,48 @@
+﻿@model WriterInfoViewModel
+    @{
+        ViewData["Title"] = "WriterEditProfile";
+        Layout = "~/Views/Shared/WriterLayout.cshtml";
+    }
+
+    <h1>Yazar Bilgileri Sayfası</h1>
+
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Yazar Bilgileri Düzenleme</h4>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="exampleInputName1">Ad Soyad</label>
+                            <input type="text" class="form-control" asp-for="@Model.namesurname" id="exampleInputEmail3" placeholder="Kullanıcı Adı">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" asp-for="@Model.username" id="exampleInputEmail3" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Yazar Mail</label>
+                            <input type="email" class="form-control" asp-for="@Model.mail" id="exampleInputEmail3" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Resim Yükle</label>
+                            <input type="file" class="form-control" asp-for="@Model.image">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Şifre Değiştir</label>
+                            <input type="text" class="form-control" asp-for="@Model.password" id="exampleInputEmail3" placeholder="Yeni şifre">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                        <a href="/Dashboard/Index" class="btn btn-gradient-info mr-2">Iptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    
+

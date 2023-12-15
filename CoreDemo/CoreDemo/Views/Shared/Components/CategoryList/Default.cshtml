@@ -1,0 +1,18 @@
+﻿@using EntityLayer.Concrete
+@model IEnumerable<Category>
+
+<div class="tech-btm">
+    <h4>Kategoriler</h4>
+    <ul class="list-group single">
+
+        @foreach (var item in Model)
+        {
+            <a asp-controller="Category" asp-action="Index" asp-route-id="@item.CategoryId" class="text-dark">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @item.CategoryName
+            </li>
+            </a>
+        }
+
+    </ul>
+</div>

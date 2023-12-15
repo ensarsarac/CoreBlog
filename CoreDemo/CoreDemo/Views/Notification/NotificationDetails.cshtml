@@ -1,0 +1,21 @@
+﻿@model EntityLayer.Concrete.Notification
+@{
+    ViewData["Title"] = "NotificationDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Bildirim Detayları</h1>
+
+<table class="table">
+    <tr>
+        
+            <th>Başlık</th>
+            <th>İçerik</th>
+        
+    </tr>
+
+    <tr>
+        <td>@Model.NotificationType</td>
+        <td>@Model.NotificationDetails</td>
+    </tr>
+</table>

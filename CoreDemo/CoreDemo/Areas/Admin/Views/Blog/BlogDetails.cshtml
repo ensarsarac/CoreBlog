@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model Blog
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row  bg-light p-4">
+
+        <div class="col-sm-4">
+            <img src="~/img/@Model.BlogImage" class="w-100 img-thumbnail" />
+        </div>
+        
+        <div class="col-sm-8">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>@Model.BlogTitle</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <small class="badge">@Model.Category.CategoryName</small>
+                <p class="mt-3">@Model.BlogContent</p>
+            </div>
+
+            <div class="card-footer">
+                <span>@Model.Writer.WriterName tarafından eklendi</span>
+                <span class="float-right">@Model.BlogCreateDate.ToShortDateString()</span>
+            </div>
+
+            <a href="/Admin/Blog/AllBlogs/" class="btn btn-primary my-3">Bloglara Dön</a>
+
+        </div>
+
+
+    </div>
+</div>
+
+    
