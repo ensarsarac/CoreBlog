@@ -23,6 +23,7 @@ CRUD (Create, Read, Update, Delete) işlemleri daha etkili ve basit bir şekilde
 <li>User Panel ve Admin Panel </li>
 <li>Rolleme yaparak erişim kısıtlaması</li>
 <li>Mesajlaşma özelliği</li>
+  <li>FluentValidatior</li>
 </ul>
 
 <h3>Admin Özellikleri</h3>
